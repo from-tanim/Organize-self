@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to January 10, 2025</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #countdown {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        #days {
+            font-size: 8rem; /* Bigger font size for days */
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .label {
+            font-size: 1.5rem;
+            color: #888;
+        }
+
+        .time {
+            font-size: 3rem;
+            margin: 10px 0;
+        }
+
+        .label.days-label {
+            font-size: 2rem;
+        }
+
+        /* Water Drop Animation */
+        .water-drop {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: drop 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Water Drop Background -->
+    <script>
+        const createDrops = (numDrops) => {
+            const body = document.body;
+            for (let i = 0; i < numDrops; i++) {
+                const drop = document.createElement('div');
+                drop.classList.add('water-drop');
+                drop.style.left = Math.random() * 100 + 'vw';
+                drop.style.animationDuration = Math.random() * 3 + 2 + 's';
+                drop.style.animationDelay = Math.random() * 5 + 's';
+                body.appendChild(drop);
+            }
+        };
+
+        createDrops(50); // Add 50 water drops
+    </script>
+
+    <!-- Countdown -->
+    <div id="countdown">
+        <div id="days">--</div>
+        <div class="label days-label">Days</div>
+        <div class="time" id="hours">--</div>
+        <div class="label">Hours</div>
+        <div class="time" id="minutes">--</div>
+        <div class="label">Minutes</div>
+        <div class="time" id="seconds">--</div>
+        <div class="label">Seconds</div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('January 10, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeRemaining = targetDate - now;
+
+            if (timeRemaining <= 0) {
+                document.getElementById('countdown').innerHTML = "<h1>Countdown Complete!</h1>";
+                return;
+            }
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
