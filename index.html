@@ -1,8 +1,44 @@
 <html>
   <body>
-    <tittle>Organized way</tittle>
-    <header>
-      <h1>These things are a lot to me for save my time</h1>
+<header>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="quote-headline"></h1>
+
+    <script>
+        // Array of quotes
+        const quotes = [
+            "The best way to predict the future is to create it.",
+            "Success is not the key to happiness. Happiness is the key to success.",
+            "Your time is limited, don't waste it living someone else's life.",
+            "Believe you can and you're halfway there.",
+            "Do what you can with all you have, wherever you are."
+        ];
+
+        // Function to get a random quote
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        // Set the random quote as the headline
+        document.getElementById("quote-headline").textContent = getRandomQuote();
+    </script>
+
+
+    
+   
+      <h2>These things are a lot to me for save my time</h2>
     </header>
     <ul type="i">
   <li>    <a href="countdown.html">COUNTDOWN</a></li>
