@@ -195,8 +195,7 @@
 </head>
 <body>
     <header>
-        <h1>Class Organizer</h1>
-        <p>All subjects and chapters in one place</p>
+        
         <button onclick="toggleDarkMode()">🌚</button>
     </header>
 
@@ -992,7 +991,10 @@
 
                         const link = document.createElement("a");
                         link.href = "#";
-                        link.textContent = "Watch video";
+                        link.textContent = "Lectures";
+                        
+link.style.color = "red";
+
                         link.addEventListener("click", function (e) {
                             e.preventDefault();
 
